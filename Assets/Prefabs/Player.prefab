@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -261200727523807864}
   - component: {fileID: -109585364273328998}
   - component: {fileID: -3336588636592755813}
+  - component: {fileID: 1632105559242193056}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -159,6 +160,20 @@ MonoBehaviour:
   firingRateVariance: 0
   minimumFiringRate: 0.1
   isFiring: 0
+--- !u!114 &1632105559242193056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395723987227118887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e9df49f382906459ed818d5ccc68a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deflectorEffectPrefab: {fileID: 4091473299570758215, guid: 511c73e9d12112246b4e0a0f566c3f29, type: 3}
+  isDeflecting: 0
 --- !u!1 &6242464883401415802
 GameObject:
   m_ObjectHideFlags: 0

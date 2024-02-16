@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,10 +19,12 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingBottom;
 
     Shooter shooter;
+    Deflector deflector;
 
     void Awake()
     {
-        shooter = GetComponent<Shooter>(); 
+        shooter = GetComponent<Shooter>();
+        deflector = GetComponent<Deflector>();
     }
     void Start() 
     {
@@ -60,6 +63,14 @@ public class Player : MonoBehaviour
         if(shooter != null)
         {
             shooter.isFiring = value.isPressed;
+        }
+    }
+
+    void OnDeflect(InputValue value)
+    {
+        if(deflector != null)
+        {
+            deflector.isDeflecting = true;
         }
     }
 }

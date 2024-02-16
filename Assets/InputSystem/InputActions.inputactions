@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Deflect",
+                    "type": "Button",
+                    "id": "9593a8ac-dc19-4b68-90f4-5b6dffedfbb3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -256,12 +265,12 @@
                 },
                 {
                     "name": "",
-                    "id": "801b66d8-783e-4b9d-be4a-5c0edf7a5d45",
+                    "id": "61b456f9-89c6-4b3c-b9ec-e906a90640c6",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "Deflect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
