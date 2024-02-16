@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deflectorEffectPrefab: {fileID: 4091473299570758215, guid: 511c73e9d12112246b4e0a0f566c3f29, type: 3}
+  deflectorSlider: {fileID: 0}
   isDeflecting: 0
 --- !u!1 &6242464883401415802
 GameObject:

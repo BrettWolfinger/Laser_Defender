@@ -1,18 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Deflector : MonoBehaviour
 {
     [SerializeField] GameObject deflectorEffectPrefab;
-    public bool isDeflecting;
+    [SerializeField] Slider deflectorSlider;
+
+    float deflectorDuration = 0.5f;
+    float deflectorCooldownTime = 5f;
+    bool isDeflecting;
+    bool isOnCooldown = false;
 
     Coroutine deflectorCoroutine;
 
-    // Update is called once per frame
     void Update()
     {
         Deflect();
+    }
+
+    public void UseDeflector()
+    {
+        if(isOnCooldown || isDeflecting)
+        {
+            Debug.Log("deflector on cooldown!");
+        }
+        else
+        {
+            isDeflecting = true;
+        }
     }
 
     void Deflect()
@@ -21,7 +38,8 @@ public class Deflector : MonoBehaviour
         {
             deflectorCoroutine = StartCoroutine(DeflectorCoroutine());
         }
-        else if(!isDeflecting && deflectorCoroutine != null)
+        //Deflector is ready to be used again, stop coroutine so it can be called again
+        else if(!isOnCooldown && deflectorCoroutine != null)
         {
             StopCoroutine(deflectorCoroutine);
             deflectorCoroutine = null;
@@ -30,10 +48,29 @@ public class Deflector : MonoBehaviour
 
     IEnumerator DeflectorCoroutine()
     {
+        isOnCooldown = true;
         GameObject instance = Instantiate(deflectorEffectPrefab, 
                                 this.transform, worldPositionStays:false);
-        yield return new WaitForSeconds(5);
+        
+        //Length of deflector activation
+        float time = deflectorDuration;
+        while(time > 0)
+        {
+            deflectorSlider.value = time / Mathf.Max(deflectorDuration, Mathf.Epsilon);
+            time -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
         Destroy(instance);
         isDeflecting = false;
+
+        //Keep deflector on cooldown
+        time = 0.0f;
+        while(time < deflectorCooldownTime)
+        {
+            deflectorSlider.value = time / Mathf.Max(deflectorCooldownTime, Mathf.Epsilon);
+            time += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        isOnCooldown = false;
     }
 }

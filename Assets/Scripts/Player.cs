@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     {
         if(deflector != null)
         {
-            deflector.isDeflecting = true;
+            deflector.UseDeflector();
         }
     }
 }
